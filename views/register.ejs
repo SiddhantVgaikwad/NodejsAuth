@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  
+</head>
+<body>
+
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6"><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image"></div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <h2 class="fw-bold mb-5" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">REGISTER!</h2>
+        
+        
+        <div><%- include ("./messages") %></div>
+
+    
+    <form action="/auth/register" method="POST">
+      <div class="row">
+        <div class="from-outline mb-4">
+          <label for="name" class="form-label"></label>
+          <input type="name" id="name" name="name" class="form-control form-control-lg" placeholder="Enter Name"
+          value="<%= typeof name != 'undefined' ? name : '' %>" />
+        </div>
+        <div class="from-outline mb-4">
+        <label for="email" class="form-label"></label>
+        <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Enter Email"
+          value="<%= typeof email != 'undefined' ? email : '' %>" />
+      </div>
+      <div class="from-outline mb-4">
+        <label for="password" class="form-label"></label>
+        <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter Password"
+          value="<%= typeof password != 'undefined' ? password : '' %>" />
+      </div>
+      <div class="from-outline mb-4">
+        <label for="password2" class="form-label"></label>
+        <input type="password" id="password2" name="password2" class="form-control form-control-lg" placeholder="Confirm Password"
+          value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+            </div>
+
+
+            <div class="g-recaptcha" data-sitekey="6LeCpEUoAAAAAOpxHM1KXjnFAcBTkr4ZPiehKpOW"></div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+              <p class="mt-4">Already have an account? <a href="/auth/login">Login</a></p>
+             <p>OR</p>
+
+              
+                
+
+                
+                <a class="btn btn-primary btn-lg btn-block" style="background-color: orangered;color: rgb(255, 255, 255);" 
+                role="button" href="/google">
+                <i class="fab fa-google me-2"></i>Continue with Google</a>
+              
+              </form>   
+          
+          
+        
+       </div>
+      </div>
+     </div>
+    </section>
+</body>  
+
+          
+    </html>
