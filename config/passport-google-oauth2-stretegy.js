@@ -12,7 +12,7 @@ passport.use(new googleStretegy({
     // options for google stretegy 
         clientID: '790978963506-vho023ge5cmc0kqokakfsk549ole1apr.apps.googleusercontent.com',
         clientSecret: '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',
-        callbackURL: 'http://localhost:10000/user/auth/google/callback',
+        callbackURL: 'http://localhost:8004/user/auth/google/callback',
         passReqToCallback: true,
     },
     async function(request, accessToken, refreseToken, profile, done) {
