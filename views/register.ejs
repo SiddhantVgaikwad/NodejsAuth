@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In</title>
+  <title>Sign Up</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <style>
     body {
       background-color: #f8f9fa;
@@ -50,11 +51,6 @@
     .divider::after {
       margin-left: 10px;
     }
-    .auth-links {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -63,40 +59,53 @@
       <div class="col-lg-6 col-md-8">
         <div class="card p-4">
           <div class="card-body">
-            <h2 class="text-center mb-4 fw-bold" style="color: #0d6efd;">Welcome Back</h2>
+            <h2 class="text-center mb-4 fw-bold" style="color: #0d6efd;">Create Your Account</h2>
             
-            <%- include ("./messages") %>
+            <div><%- include ("./messages") %></div>
 
-            <form action="/auth/login" method="POST">
+            <form action="/auth/register" method="POST">
               <div class="mb-3">
-                <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" />
+                <input type="text" id="name" name="name" class="form-control" placeholder="Full Name"
+                  value="<%= typeof name != 'undefined' ? name : '' %>" />
+              </div>
+              
+              <div class="mb-3">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email Address"
+                  value="<%= typeof email != 'undefined' ? email : '' %>" />
+              </div>
+              
+              <div class="mb-3">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                  value="<%= typeof password != 'undefined' ? password : '' %>" />
               </div>
               
               <div class="mb-4">
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+                <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
+                  value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+              </div>
+
+              <div class="mb-4">
+                <div class="g-recaptcha" data-sitekey="6LeCpEUoAAAAAOpxHM1KXjnFAcBTkr4ZPiehKpOW"></div>
               </div>
               
               <button type="submit" class="btn btn-primary w-100 mb-3">
-                Login
+                Register
               </button>
-              
-              <div class="auth-links">
-                <a href="/auth/register" class="text-decoration-none">Create Account</a>
-                <a href="/auth/forgot" class="text-decoration-none">Forgot Password?</a>
-              </div>
               
               <div class="divider">OR</div>
               
-              <a class="btn btn-google w-100" role="button" href="/google">
+              <a class="btn btn-google w-100 mb-3" role="button" href="/google">
                 <i class="fab fa-google me-2"></i>Continue with Google
               </a>
+              
+              <p class="text-center mt-3">
+                Already have an account? <a href="/auth/login" class="text-decoration-none">Log in</a>
+              </p>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
