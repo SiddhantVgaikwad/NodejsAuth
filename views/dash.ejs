@@ -1,15 +1,427 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Auth System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #1cc88a;
+      --danger-color: #e74a3b;
+      --dark-color: #5a5c69;
+    }
+    
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .sidebar {
+      background: linear-gradient(180deg, var(--primary-color) 10%, #224abe 100%);
+      min-height: 100vh;
+      color: white;
+      position: fixed;
+      width: 250px;
+      transition: all 0.3s;
+    }
+    
+    .sidebar-brand {
+      height: 4.375rem;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      letter-spacing: 0.05rem;
+      z-index: 1;
+    }
+    
+    .sidebar-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin: 0 1rem 1rem;
+    }
+    
+    .nav-item {
+      position: relative;
+    }
+    
+    .nav-link {
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+    }
+    
+    .nav-link:hover {
+      color: white;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-link i {
+      margin-right: 0.5rem;
+    }
+    
+    .active {
+      color: white;
+    }
+    
+    .content-wrapper {
+      margin-left: 250px;
+      width: calc(100% - 250px);
+      min-height: 100vh;
+    }
+    
+    .topbar {
+      height: 4.375rem;
+      box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+      background-color: white;
+    }
+    
+    .card {
+      border: none;
+      border-radius: 0.35rem;
+      box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+      margin-bottom: 1.5rem;
+    }
+    
+    .card-header {
+      background-color: #f8f9fc;
+      border-bottom: 1px solid #e3e6f0;
+      padding: 1rem 1.35rem;
+      font-weight: 600;
+    }
+    
+    .bg-primary {
+      background-color: var(--primary-color) !important;
+    }
+    
+    .bg-success {
+      background-color: var(--secondary-color) !important;
+    }
+    
+    .bg-danger {
+      background-color: var(--danger-color) !important;
+    }
+    
+    .bg-warning {
+      background-color: #f6c23e !important;
+    }
+    
+    .stat-card {
+      border-left: 0.25rem solid;
+      color: white;
+    }
+    
+    .stat-card .card-body {
+      padding: 1rem;
+    }
+    
+    .stat-card-icon {
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+    
+    .user-profile-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .welcome-card {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
+      color: white;
+    }
+    
+    .welcome-card .btn-light {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+    }
+    
+    .welcome-card .btn-light:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  </style>
 </head>
-
-
 <body>
-    <h4 class="mt-4">Dashboard</h4>
-    <hr>
-    <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">WELCOME ! <%= name %></h1><br>
-    <a href="/auth/logout" class="btn btn-primary btn-lg" style="background-color:crimson;" >LOGOUT</a>
-
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-brand d-flex align-items-center justify-content-center">
+        <i class="fas fa-lock me-2"></i>
+        <span>Auth System</span>
+      </div>
+      <hr class="sidebar-divider">
+      
+      <div class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/settings">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/users">
+            <i class="fas fa-fw fa-users"></i>
+            <span>User Management</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/activity">
+            <i class="fas fa-fw fa-history"></i>
+            <span>Activity Log</span>
+          </a>
+        </li>
+        
+        <hr class="sidebar-divider">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/logout">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </div>
+    </div>
+    
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand topbar mb-4 static-top">
+        <div class="container-fluid">
+          <button class="btn btn-link d-md-none rounded-circle me-3">
+            <i class="fa fa-bars"></i>
+          </button>
+          
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                <img src="https://ui-avatars.com/api/?name=<%= name %>&background=random" class="user-profile-img me-2">
+                <span class="d-none d-lg-inline"><%= name %></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="/profile">
+                  <i class="fas fa-user fa-sm me-2"></i> Profile
+                </a>
+                <a class="dropdown-item" href="/settings">
+                  <i class="fas fa-cogs fa-sm me-2"></i> Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/auth/logout">
+                  <i class="fas fa-sign-out-alt fa-sm me-2"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+      <!-- Main Content -->
+      <div class="container-fluid">
+        <!-- Welcome Card -->
+        <div class="card welcome-card mb-4">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h4 class="card-title">Welcome back, <%= name %>!</h4>
+                <p class="card-text">You have successfully logged in to your account. Here's what's happening with your account today.</p>
+                <a href="/profile" class="btn btn-light">View Profile</a>
+              </div>
+              <div class="col-md-4 text-center">
+                <img src="https://ui-avatars.com/api/?name=<%= name %>&background=random&size=150" class="rounded-circle">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="row">
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card stat-card border-left-primary">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col me-2">
+                    <div class="text-xs font-weight-bold text-uppercase mb-1">
+                      Total Logins</div>
+                    <div class="h5 mb-0 font-weight-bold">24</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-sign-in-alt stat-card-icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card stat-card border-left-success">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col me-2">
+                    <div class="text-xs font-weight-bold text-uppercase mb-1">
+                      Account Age</div>
+                    <div class="h5 mb-0 font-weight-bold">15 days</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar-alt stat-card-icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card stat-card border-left-warning">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col me-2">
+                    <div class="text-xs font-weight-bold text-uppercase mb-1">
+                      Security Level</div>
+                    <div class="h5 mb-0 font-weight-bold">Medium</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-shield-alt stat-card-icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card stat-card border-left-danger">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col me-2">
+                    <div class="text-xs font-weight-bold text-uppercase mb-1">
+                      Failed Attempts</div>
+                    <div class="h5 mb-0 font-weight-bold">2</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-exclamation-triangle stat-card-icon"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recent Activity -->
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="m-0 font-weight-bold">Recent Activity</h6>
+              </div>
+              <div class="card-body">
+                <div class="list-group list-group-flush">
+                  <div class="list-group-item d-flex align-items-center">
+                    <div class="me-3 text-success">
+                      <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <div>
+                      <small class="text-muted">Today, 10:45 AM</small>
+                      <div>Successful login from Chrome on Windows</div>
+                    </div>
+                  </div>
+                  <div class="list-group-item d-flex align-items-center">
+                    <div class="me-3 text-warning">
+                      <i class="fas fa-key"></i>
+                    </div>
+                    <div>
+                      <small class="text-muted">Yesterday, 8:30 PM</small>
+                      <div>Password changed</div>
+                    </div>
+                  </div>
+                  <div class="list-group-item d-flex align-items-center">
+                    <div class="me-3 text-danger">
+                      <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                      <small class="text-muted">Yesterday, 8:25 PM</small>
+                      <div>Failed login attempt</div>
+                    </div>
+                  </div>
+                  <div class="list-group-item d-flex align-items-center">
+                    <div class="me-3 text-primary">
+                      <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <div>
+                      <small class="text-muted">Monday, 3:15 PM</small>
+                      <div>Successful login from Firefox on Mac</div>
+                    </div>
+                  </div>
+                </div>
+                <a href="/activity" class="btn btn-link mt-2">View All Activity</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Security Status -->
+          <div class="col-lg-6 mb-4">
+            <div class="card">
+              <div class="card-header">
+                <h6 class="m-0 font-weight-bold">Security Status</h6>
+              </div>
+              <div class="card-body">
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Password Strength</span>
+                    <span>Strong</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%"></div>
+                  </div>
+                </div>
+                
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Two-Factor Authentication</span>
+                    <span class="text-danger">Disabled</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 0%"></div>
+                  </div>
+                  <small class="text-muted">Enable 2FA for enhanced security</small>
+                  <a href="/settings/security" class="d-block mt-1">Set up now</a>
+                </div>
+                
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between mb-1">
+                    <span>Account Recovery</span>
+                    <span class="text-success">Complete</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                  </div>
+                  <small class="text-muted">You have recovery email set up</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
