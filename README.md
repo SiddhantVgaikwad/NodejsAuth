@@ -1,4 +1,15 @@
-# NodejsAuth
+
+### Node.js Authentication System
+
+# A complete authentication system built with Node.js, Express, MongoDB, and Passport.js that supports:
+
+- Local authentication (email/password)
+
+- Google OAuth 2.0 authentication
+
+- Session management
+
+- User profile management
 
 Creating a fully functional web application with all these features would require significant coding and involve multiple technologies and tools. Here, I'll provide you with a high-level overview of the steps and technologies you can use to implement each of these features:
 
@@ -35,6 +46,51 @@ Use JavaScript and CSS to display notifications for unmatching passwords during 
 8. Enable reCAPTCHA (Extra Points):
 
 Integrate Google reCAPTCHA in your sign-up and login forms to prevent automated bots from spamming your application.
+
+
+Security features
+
+Features
+✅ Authentication Methods
+
+Email/password login
+
+Google OAuth login
+
+Secure password reset
+
+🔐 Security Features
+
+Password hashing with bcrypt
+
+Session management
+
+CSRF protection
+
+Login activity tracking
+
+Failed attempt logging
+
+📊 User Dashboard
+
+Profile management
+
+Activity logs
+
+Security status monitoring
+
+Account statistics
+
+Technologies Used
+Backend: Node.js, Express
+
+Database: MongoDB (with Mongoose)
+
+Authentication: Passport.js
+
+Frontend: Bootstrap 5, EJS templates
+
+Other: bcryptjs, express-session, connect-mongo
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
