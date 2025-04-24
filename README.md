@@ -47,6 +47,7 @@ Use JavaScript and CSS to display notifications for unmatching passwords during 
 
 Integrate Google reCAPTCHA in your sign-up and login forms to prevent automated bots from spamming your application.
 
+![image](https://github.com/user-attachments/assets/643e3ce8-cb00-44df-a5d3-fb71707dc81d)
 
 Security features
 
