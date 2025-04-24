@@ -1,52 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Sign in</title>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <title>Sign In</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+    .form-control {
+      height: 50px;
+      border-radius: 8px;
+    }
+    .btn-primary {
+      background-color: #0d6efd;
+      border: none;
+      height: 50px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .btn-google {
+      background-color: #db4437;
+      color: white;
+      height: 50px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #6c757d;
+      margin: 20px 0;
+    }
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .divider::before {
+      margin-right: 10px;
+    }
+    .divider::after {
+      margin-left: 10px;
+    }
+    .auth-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
-
-
 <body>
-<!-- Section: Design Block -->
-<section class="vh-100">
-    <div class="container py-5 h-100">
-      <div class="row d-flex align-items-center justify-content-center h-100">
-        <div class="col-md-8 col-lg-7 col-xl-6"><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"class="img-fluid" alt="Phone image"></div>
-        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <h2 class="fw-bold mb-5">Welcome back, please log in</h2>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card p-4">
+          <div class="card-body">
+            <h2 class="text-center mb-4 fw-bold" style="color: #0d6efd;">Welcome Back</h2>
+            
             <%- include ("./messages") %>
+
             <form action="/auth/login" method="POST">
-                <div class="form-outline mb-4">
-                    <label for="email"></label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
-                </div>
-                <div class="form-outline mb-4">
-                    <label for="password"></label>
-                    <input type="password" id="password" name="password" class="form-control"
-                        placeholder="Enter Password" />
-                </div>
-                <br>
-
-                <div class="form-outline mb-4"><button type="submit" class="btn btn-primary btn-lg btn-block">Login</button></div>
-                
-
-
-                <p class="mt-4">New User? <a href="/auth/register">Register</a></p>
-                <p>Forgot Password? <a href="/auth/forgot">Reset</a></p>
-
-
-                <a class="btn btn-primary btn-lg btn-block" style="background-color:orangered;color: rgb(255, 255, 255);" 
-                role="button" href="/google">
-                <i class="fab fa-google me-2"></i>Continue with Google</a>
+              <div class="mb-3">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" />
+              </div>
+              
+              <div class="mb-4">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+              </div>
+              
+              <button type="submit" class="btn btn-primary w-100 mb-3">
+                Login
+              </button>
+              
+              <div class="auth-links">
+                <a href="/auth/register" class="text-decoration-none">Create Account</a>
+                <a href="/auth/forgot" class="text-decoration-none">Forgot Password?</a>
+              </div>
+              
+              <div class="divider">OR</div>
+              
+              <a class="btn btn-google w-100" role="button" href="/google">
+                <i class="fab fa-google me-2"></i>Continue with Google
+              </a>
             </form>
-            
-            
+          </div>
         </div>
+      </div>
     </div>
   </div>
-</section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+</html>
