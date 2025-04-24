@@ -35,3 +35,16 @@ Use JavaScript and CSS to display notifications for unmatching passwords during 
 8. Enable reCAPTCHA (Extra Points):
 
 Integrate Google reCAPTCHA in your sign-up and login forms to prevent automated bots from spamming your application.
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Future Improvements
+Add email verification
+
+Implement two-factor authentication
+
+Add more social login options (Facebook, GitHub)
+
+Implement rate limiting
+
+Add admin dashboard
